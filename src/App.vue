@@ -1,11 +1,16 @@
 <template>
   <div id="app">
-    
+    <Home></Home>
   </div>
 </template>
 
 <script>
-
+import Home from './views/Home'
+export default{
+  components:{
+    Home
+  }
+}
 </script>
 
 <style>
@@ -16,5 +21,14 @@
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+body,
+html {
+	height: 100%;
+	margin: 0;
+	background: #7f7fd5;
+	background: -webkit-linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
+	background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
 }
 </style>
