@@ -21,6 +21,17 @@ export default {
 		ChatContact,
 		Message,
 		TypeMessage
+	},
+	data(){
+		return{
+			
+		}
+	},
+	methods: {
+
+	},
+	created(){
+		console.log(this.$store.state.username)
 	}
 };
 </script>

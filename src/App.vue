@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Home></Home>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -25,7 +25,7 @@ export default{
 
 body,
 html {
-	height: 100%;
+	height: auto;
 	margin: 0;
 	background: #7f7fd5;
 	background: -webkit-linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
