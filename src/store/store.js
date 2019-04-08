@@ -1,29 +1,40 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
+import Vue from "vue";
+import Vuex from "vuex";
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    username: ''
+    session: {},
+    users: [],
+    search: ""
   },
   getters: {
-
+    getOnlineUsers: state => {
+        return state.search 
+              ? state.users.filter(user => user.id !== state.session.id && user.username.includes(state.search))
+              : state.users.filter(user => user.id !== state.session.id)
+    }
   },
   mutations: {
-    setUsername(state, name){
-      state.username = name;
-    } 
+    setSession(state, user) {
+      state.session = user;
+    },
+    setUsers(state, users) {
+      state.users = users;
+    },
+    setSearch(state, text) {
+      state.search = text;
+    }
   },
-  actions: {
 
-  }
-})
+  actions: {}
+});
 
 export default store;
 
-const initialStateCopy = JSON.parse(JSON.stringify(store.state))
+const initialStateCopy = JSON.parse(JSON.stringify(store.state));
 
 export function resetState() {
-   store.replaceState(JSON.parse(JSON.stringify(initialStateCopy)))
+  store.replaceState(JSON.parse(JSON.stringify(initialStateCopy)));
 }

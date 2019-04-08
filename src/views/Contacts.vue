@@ -5,18 +5,12 @@
 		</div>
 		<div class="card-body contacts_body">
 			<div class="contacts">
-				<li class="active">
-					<Contact></Contact>
-				</li>
-				<li>
-					<Contact></Contact>
-				</li>
-				<li>
-					<Contact></Contact>
+				<li v-for="user in $store.getters.getOnlineUsers" :key="user.id">
+					<Contact :user="user"></Contact>
 				</li>
 			</div>
 		</div>
-		<div class="card-footer">Total: 3</div>
+		<div class="card-footer">Total: {{$store.getters.getOnlineUsers.length}}</div>
 	</div>
 </template>
 
@@ -27,6 +21,19 @@ export default {
 	components: {
 		Search,
 		Contact
+	},
+	beforeCreate() {
+		if (this.$store.state.session === {}) {
+			this.$router.push("/login");
+		} else {
+			this.$api.getUsers();
+		}
+	},
+	created() {
+
+	},
+	mounted() {
+
 	}
 };
 </script>

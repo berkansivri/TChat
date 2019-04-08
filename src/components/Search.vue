@@ -1,6 +1,6 @@
 <template>
 	<div class="input-group">
-		<input type="text" placeholder="Search..." name class="form-control search">
+		<input type="text" placeholder="Search..." class="form-control search" v-model="searchText">
 		<div class="input-group-prepend">
 			<span class="input-group-text search_btn">
 				<i class="fas fa-search"></i>
@@ -10,7 +10,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+	data() {
+		return {
+			searchText: ""
+		};
+	},
+	watch:{
+		searchText(text){
+			this.$store.commit("setSearch", text)
+		}
+	}
+};
 </script>
 
 <style scoped>

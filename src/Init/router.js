@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
+import store from '../store/store'
 Vue.use(VueRouter);
 
 let router = new VueRouter({
@@ -10,7 +10,10 @@ let router = new VueRouter({
     {
       path: "/",
       name: "home",
-      component: () => import("../views/Home.vue")
+      component: () => import("../views/Home.vue"),
+      meta: {
+        auth: true
+      }
     },
     {
       path: "/Login",
@@ -19,7 +22,7 @@ let router = new VueRouter({
     },
     {
       path: "*",
-      redirect: "/"
+      redirect: "/login"
     }
   ]
 });
