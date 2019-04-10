@@ -18,6 +18,19 @@ export default {
 	components: {
 		Contacts,
 		Chat
+	},
+	beforeRouteLeave(to, from, next) {
+		if (to.name !== "Login") {
+			const answer = window.confirm("Do you really want to leave? you have unsaved changes!");
+			if (answer) {
+				console.log(answer);
+				next();
+			} else {
+				next(false);
+			}
+		}else{
+			next();
+		}
 	}
 };
 </script>
@@ -55,17 +68,6 @@ export default {
 	position: relative;
 	height: 70px;
 	width: 70px;
-}
-
-.online_icon {
-	position: absolute;
-	height: 15px;
-	width: 15px;
-	background-color: #4cd137;
-	border-radius: 50%;
-	bottom: 0.2em;
-	right: 0.4em;
-	border: 1.5px solid white;
 }
 
 .user_info {

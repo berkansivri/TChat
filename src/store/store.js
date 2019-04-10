@@ -7,10 +7,12 @@ const store = new Vuex.Store({
   state: {
     session: {},
     users: [],
-    search: ""
+    search: "",
+    chatUser: {},
+    messages:[]
   },
   getters: {
-    getOnlineUsers: state => {
+    getUsers: state => {
         return state.search 
               ? state.users.filter(user => user.id !== state.session.id && user.username.includes(state.search))
               : state.users.filter(user => user.id !== state.session.id)
@@ -25,6 +27,12 @@ const store = new Vuex.Store({
     },
     setSearch(state, text) {
       state.search = text;
+    },
+    setChatUser(state, user) {
+      state.chatUser = user;
+    },
+    pushMessages(state, message){
+      state.messages.push(message);
     }
   },
 

@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="card card-login mx-auto text-center bg-dark">
 			<div class="card-header mx-auto bg-dark">
-				<span> <img src="" class="w-75" alt="Logo"> </span><br />
+				<span> <img src="../../public/logo.png" class="w-25 h-25" alt="Logo"> </span><br />
 				<span class="logo_title mt-5"> Login TChat </span>
 			</div>
 			<div class="card-body">
@@ -11,8 +11,9 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" v-model="username" @keyup.enter.prevent="login" class="form-control" placeholder="Username">
+						<input type="text" v-model="username" @keyup.enter.prevent="login" class="form-control" placeholder="Name">
 					</div>
+						<p class="alert alert-dark small"> * Your information will be stored for your next entry</p>
 					<div class="form-group">
 						<input @click="login" class="btn btn-outline-danger float-right login_btn" value="Login" type="button">
 					</div>
@@ -27,16 +28,20 @@
 export default {
 	data() {
 		return {
-			username: ""
+			username: "",
 		};
 	},
 	methods: {
 		login() {
 			this.$api.addUser(this.username).then( id => {
+				
+				var session = {id, username: this.username};
+				this.$store.commit("setSession", session);
+				//this.$cookie.set("session", JSON.stringify(session));
 
-				this.$store.commit("setSession", { id, username: this.username });
-				this.$api.getUsers();
-					this.$router.push("/");
+				this.$api.subUsers();
+				this.$mq.connect();
+				this.$router.push("/");
 				})
 		}
 	}
