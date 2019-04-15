@@ -30,6 +30,7 @@ export default {
 	methods:{
 		selectUser(user){
 			this.$store.commit("setChatUser", user)
+			this.$store.commit("markMessagesAsRead", user.id)
 		}
 	}
 };

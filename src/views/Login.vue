@@ -11,7 +11,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
 						</div>
-						<input type="text" v-model="username" @keyup.enter.prevent="login" class="form-control" placeholder="Name">
+						<input type="text" v-model="username" @keydown.enter.prevent="login" class="form-control" placeholder="Name">
 					</div>
 						<p class="alert alert-dark small"> * Your information will be stored for your next entry</p>
 					<div class="form-group">

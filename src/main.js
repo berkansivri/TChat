@@ -15,10 +15,10 @@ Vue.use(VueCookie);
 new Vue({
   created(){
     window.onbeforeunload = function() {
-      mqservice.disconnect();
-      return "test"
-    };
-  },
+      apiservice.disconnectUser();
+      return null
+     };
+   },
   render: h => h(App),
   router,
   store,

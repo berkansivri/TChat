@@ -16,6 +16,16 @@ const store = new Vuex.Store({
         return state.search 
               ? state.users.filter(user => user.id !== state.session.id && user.username.includes(state.search))
               : state.users.filter(user => user.id !== state.session.id)
+    },  
+    getMessages: state => {
+      return state.messages.filter( message => ((message.from == state.session.id && message.to == state.chatUser.id)
+                                                || (message.to == state.session.id && message.from == state.chatUser.id) ) )
+    },
+    getUnreadMessages: (state) => (id) => {
+      return state.messages.filter( message => message.from == id && !message.isRead ) 
+    },
+    isChatuserOnline: state => {
+      return state.users.find(user=>user.id == state.chatUser.id).isOnline
     }
   },
   mutations: {
@@ -31,8 +41,11 @@ const store = new Vuex.Store({
     setChatUser(state, user) {
       state.chatUser = user;
     },
-    pushMessages(state, message){
-      state.messages.push(message);
+    pushMessages(state, msgObj){
+      state.messages.push(msgObj);
+    },
+    markMessagesAsRead(state, chatUserId){
+      state.messages.filter( message => message.from == chatUserId && !message.isRead ).map ( message => message.isRead = true )
     }
   },
 

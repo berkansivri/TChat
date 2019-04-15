@@ -1,9 +1,9 @@
 <template>
-	<div class="card">
+	<div class="card" v-if="Object.keys($store.state.chatUser).length">
 		<div class="card-header msg_head">
 			<ChatContact></ChatContact>
 		</div>
-		<div class="card-body msg_card_body">
+		<div class="card-body msg_card_body" id="messages">
 			<Message></Message>
 		</div>
 		<div class="card-footer">
@@ -26,11 +26,6 @@ export default {
 		return{
 			
 		}
-	},
-	methods: {
-
-	},
-	created(){
 	}
 };
 </script>

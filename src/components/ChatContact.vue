@@ -3,11 +3,11 @@
 		<div class="d-flex bd-highlight">
 			<div class="img_cont">
 				<img src="https://2.bp.blogspot.com/-8ytYF7cfPkQ/WkPe1-rtrcI/AAAAAAAAGqU/FGfTDVgkcIwmOTtjLka51vineFBExJuSACLcBGAs/s320/31.jpg" class="rounded-circle user_img">
-				<span class="online_icon"></span>
+				<span class="online_icon" :class="isOnlineClass"></span>
 			</div>
 			<div class="user_info">
-				<span>Chat with Name Surname</span>
-				<p>1767 Messages</p>
+				<span>{{this.$store.state.chatUser.username}}</span>
+				<p>{{}}</p>
 			</div>
 			<div class="video_cam">
 				<span>
@@ -27,6 +27,11 @@ import ChatMenu from "../components/ChatMenu";
 export default {
 	components: {
 		ChatMenu
+	},
+	computed: {
+		isOnlineClass(){
+			return !this.$store.state.chatUser.isOnline ? "offline" : "";  
+		},
 	}
 };
 </script>
@@ -42,6 +47,7 @@ export default {
 	cursor: pointer;
 	margin-right: 20px;
 }
+
 </style>
 
 

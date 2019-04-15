@@ -5,9 +5,10 @@
 				<i class="fas fa-paperclip"></i>
 			</span>
 		</div>
-		<textarea name class="form-control type_msg" placeholder="Type your message..."></textarea>
+		<textarea name class="form-control type_msg" :placeholder="textAreaPlaceHolder"
+		 	@keydown.enter.prevent="sendMessage" v-model="message" :disabled="!$store.getters.isChatuserOnline"></textarea>
 		<div class="input-group-append">
-			<span class="input-group-text send_btn">
+			<span class="input-group-text send_btn" @click="sendMessage">
 				<i class="fas fa-location-arrow"></i>
 			</span>
 		</div>
@@ -15,7 +16,34 @@
 </template>
 
 <script>
-export default {};
+export default {
+	data() {
+		return {
+			message: ""
+		};
+	},
+	computed:{
+		textAreaPlaceHolder() {
+			return this.$store.getters.isChatuserOnline ? "Type your message" : "User is offline"
+		}
+	},
+	methods: {
+		sendMessage() {
+			if(this.message){
+				var date = new Date();
+				var msgObj = {
+					from: this.$store.state.session.id,
+					to: this.$store.state.chatUser.id,
+					message: this.message,
+					time: date.toLocaleTimeString()
+				};
+				this.$store.commit("pushMessages", msgObj);
+				this.$mq.sendMessage(this.message);
+				this.message = "";
+			}
+		}
+	}
+};
 </script>
 
 <style>
