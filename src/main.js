@@ -4,7 +4,7 @@ import router from './Init/router'
 import store from './store/store'
 import mqservice from './services/mqservice'
 import apiservice from './services/apiservice'
-import VueCookie from 'vue-cookie'
+import VueCookie from 'vue-cookies'
 Vue.config.productionTip = false
 
 Vue.prototype.$mq = mqservice;

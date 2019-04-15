@@ -14,10 +14,23 @@
 <script>
 import Contacts from "../views/Contacts";
 import Chat from "./Chat";
+import Auth from '../services/Auth.js'
 export default {
 	components: {
 		Contacts,
 		Chat
+	},
+	beforeCreate() {
+		if (this.$store.state.session.id === undefined) {
+			var session = Auth.getSessionCookie();
+			if(session){
+				this.$store.commit("setSession", session);
+				this.$api.subUsers();
+				this.$mq.connect();
+			}else{
+				this.$router.push("/login");
+			}
+		}
 	},
 	// beforeRouteLeave(to, from, next) {
 	// 	if (to.name !== "Login") {

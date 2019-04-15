@@ -34,15 +34,15 @@ export default {
 	methods: {
 		login() {
 			this.$api.addUser(this.username).then( id => {
-				
+
+				this.$cookie.set("session", JSON.stringify(session));
 				var session = {id, username: this.username};
 				this.$store.commit("setSession", session);
-				//this.$cookie.set("session", JSON.stringify(session));
 
 				this.$api.subUsers();
 				this.$mq.connect();
 				this.$router.push("/");
-				})
+			})
 		}
 	}
 };

@@ -22,11 +22,6 @@ export default {
 		Search,
 		Contact
 	},
-	beforeCreate() {
-		if (this.$store.state.session.id === undefined) {
-			this.$router.push("/login");
-		}
-	},
 	methods:{
 		selectUser(user){
 			this.$store.commit("setChatUser", user)
