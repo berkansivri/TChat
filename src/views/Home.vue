@@ -25,6 +25,8 @@ export default {
 			var session = Auth.getSessionCookie();
 			if(session){
 				this.$store.commit("setSession", session);
+				session.isOnline = true;
+				this.$api.updateUser(session)
 				this.$api.subUsers();
 				this.$mq.connect();
 			}else{

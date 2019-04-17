@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import Auth from '../services/Auth.js'
+
 export default {
 	data() {
 		return {
@@ -35,8 +37,8 @@ export default {
 		login() {
 			this.$api.addUser(this.username).then( id => {
 
-				this.$cookie.set("session", JSON.stringify(session));
 				var session = {id, username: this.username};
+				Auth.setSessionCookie(session)
 				this.$store.commit("setSession", session);
 
 				this.$api.subUsers();

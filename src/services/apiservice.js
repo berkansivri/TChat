@@ -21,7 +21,7 @@ export default {
   },
 
   async updateUser(user){
-    db.ref("users/").child(user.id).update(user);
+    db.ref("users/").child(user.id).update({username: user.username, isOnline: user.isOnline});
   },
 
   async getUsers() {

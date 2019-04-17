@@ -1,5 +1,5 @@
 import CryptoJS from 'crypto-js'
-
+import VueCookies from 'vue-cookies'
 const secretKey = "vueforfuture";
 
 export default {
