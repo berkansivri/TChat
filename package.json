@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --open",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "deploy": "vue-cli-service s3-deploy"
   },
   "dependencies": {
     "core-js": "3.0.1",
@@ -12,13 +13,14 @@
     "firebase": "^5.9.3",
     "paho-mqtt": "^1.1.0",
     "vue": "^2.6.10",
+    "vue-cli-plugin-s3-deploy": "^3.0.0",
     "vue-cookies": "^1.5.13",
     "vue-router": "^3.0.2",
     "vuex": "^3.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",
-    "@vue/cli-service": "^3.5.0",
+    "@vue/cli-service": "^3.6.0",
     "vue-template-compiler": "^2.5.21"
   },
   "postcss": {
