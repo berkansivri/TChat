@@ -5,7 +5,7 @@ const secretKey = "vueforfuture";
 export default {
   setSessionCookie(session) {
     var cipherText = CryptoJS.AES.encrypt(JSON.stringify(session), secretKey).toString();
-    var expireTime = "1m";
+    var expireTime = "1y";
     VueCookies.set("session", cipherText, expireTime);
   },
 

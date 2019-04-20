@@ -34,7 +34,7 @@ export default {
     var date = new Date();
 		var msgObj = {
 			from: store.state.session.id,
-			to: store.state.chatUser.id,
+      to: store.state.chatUser.id,
       message: message,
       isRead : false,
 			time: date.toLocaleTimeString()
@@ -52,7 +52,7 @@ export default {
   onMessageArrived(message){
     var msgObj = JSON.parse(message.payloadString)
     msgObj.isRead = msgObj.from == store.state.chatUser.id ? true : false;
-    store.commit("pushMessages", msgObj);
+    apiservice.translateMessage(msgObj)
   },
 
   disconnect() {

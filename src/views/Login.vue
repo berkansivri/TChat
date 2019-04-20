@@ -13,9 +13,17 @@
 						</div>
 						<input type="text" v-model="username" @keydown.enter.prevent="login" class="form-control" placeholder="Name">
 					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-flag"></i></span>
+						</div>
+						<select v-model="lang" class="form-control">
+							<option v-for="lang in languages" :key="lang.value" :value="lang.value">{{lang.title}}</option>
+						</select>
+					</div>
 						<p class="alert alert-dark small"> * Your information will be stored for your next entry</p>
 					<div class="form-group">
-						<input @click="login" class="btn btn-outline-danger float-right login_btn" value="Login" type="button">
+						<input @click="login" class="btn btn-outline-danger float-right login_btn" :class="{'disable': !lang.value}" :disabled="!loginDisable" value="Login" type="button">
 					</div>
 
 				</form>
@@ -31,13 +39,20 @@ export default {
 	data() {
 		return {
 			username: "",
+			languages: [{title: "Select your language", value:""},{title: "Turkish", value:"tr"}, {title: "English", value:"en"}],
+			lang: ""
 		};
+	},
+	computed:{
+		loginDisable() {
+			return this.lang && this.username
+		}
 	},
 	methods: {
 		login() {
-			this.$api.addUser(this.username).then( id => {
-
-				var session = {id, username: this.username};
+			var session = { username: this.username, lang: this.lang, isOnline: true };
+			this.$api.addUser(session).then( id => {
+				session.id = id;
 				Auth.setSessionCookie(session)
 				this.$store.commit("setSession", session);
 

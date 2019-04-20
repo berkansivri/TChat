@@ -20,20 +20,6 @@ export default {
 		Contacts,
 		Chat
 	},
-	beforeCreate() {
-		if (this.$store.state.session.id === undefined) {
-			var session = Auth.getSessionCookie();
-			if(session){
-				this.$store.commit("setSession", session);
-				session.isOnline = true;
-				this.$api.updateUser(session)
-				this.$api.subUsers();
-				this.$mq.connect();
-			}else{
-				this.$router.push("/login");
-			}
-		}
-	},
 	// beforeRouteLeave(to, from, next) {
 	// 	if (to.name !== "Login") {
 	// 		const answer = window.confirm("Do you really want to leave? you have unsaved changes!");

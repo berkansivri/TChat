@@ -26,6 +26,9 @@ const store = new Vuex.Store({
     },
     isChatuserOnline: state => {
       return state.users.find(user=>user.id == state.chatUser.id).isOnline
+    },
+    getLang: state => (id) => {
+      return state.users.find(user => user.id === id).lang
     }
   },
   mutations: {
