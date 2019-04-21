@@ -44,7 +44,7 @@ export default {
 .contacts li {
 	width: 100% !important;
 	padding: 5px 10px;
-	margin-bottom: 15px !important;
+	margin-bottom: 5px !important;
 }
 .contacts li:hover {
 	color: black;
