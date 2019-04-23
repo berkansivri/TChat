@@ -15,11 +15,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
 This project built for improve vue and cloud skills.
-
 * Routing with Vue-Router and state management on Vuex.
-* Users are stored in Firebase Realtime Db. To remember the users kept the information in cookie with crypted data.
+* Users are stored in <a href="https://firebase.google.com/docs/database/" target="_blank">Firebase Realtime Db</a>. To remember the users kept the information in cookie with <a href="https://github.com/brix/crypto-js" target="_blank">crypted</a> data.
 * Messages are delivered with RabbitMQ (dockerize and runnig on ec2), connection with <a href="https://github.com/eclipse/paho.mqtt.javascript" target="_blank">Paho-MQTT</a> framework.
 * Auto translate with <a href="https://tech.yandex.com/translate/" target="_blank">Yandex Translate API</a> between selected language on user login.
 * <a href="http://tchat.space/" target="_blank">Live demo</a> on AWS S3 bucket. Used vue-cli <a href="https://github.com/multiplegeorges/vue-cli-plugin-s3-deploy" target="_blank">s3 deploy plugin</a> for production.
