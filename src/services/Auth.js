@@ -6,7 +6,7 @@ export default {
   setSessionCookie(session) {
     var cipherText = CryptoJS.AES.encrypt(JSON.stringify(session), secretKey).toString();
     var expireTime = "1y";
-    VueCookies.set("session", cipherText, expireTime);
+    VueCookies.set("session", cipherText, expireTime, null, window.location.hostname);
   },
 
   getSessionCookie() {

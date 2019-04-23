@@ -14,8 +14,8 @@ const store = new Vuex.Store({
   getters: {
     getUsers: state => {
         return state.search 
-              ? state.users.filter(user => user.id !== state.session.id && user.username.includes(state.search))
-              : state.users.filter(user => user.id !== state.session.id)
+              ? state.users.filter(user => user.id !== state.session.id && user.username.includes(state.search)).sort((x, y) => y.isOnline - x.isOnline)
+              : state.users.filter(user => user.id !== state.session.id).sort((x, y) => y.isOnline - x.isOnline)
     },  
     getMessages: state => {
       return state.messages.filter( message => ((message.from == state.session.id && message.to == state.chatUser.id)

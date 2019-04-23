@@ -20,6 +20,7 @@ export default {
 				this.$api.updateUser(session)
 				this.$api.subUsers();
 				this.$mq.connect();
+				this.$router.push("/");
 			}else{
 				this.$router.push("/login");
 			}
