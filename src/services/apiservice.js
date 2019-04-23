@@ -49,10 +49,17 @@ export default {
        + '&lang='+ encodeURIComponent(senderLang ? `${senderLang}-${lang}` : lang)
        + '&text='+ encodeURIComponent(msg))
       .then(response => response.json())
-      .then((json) => {
+      .then(json => {
         msgObj.message = json.text[0];
         store.commit("pushMessages", msgObj);
       });
+  },
+
+  getLangs(){
+    return fetch('https://translate.yandex.net/api/v1.5/tr.json/getLangs?key='
+       + 'trnsl.1.1.20190417T082424Z.87b25bdb2b535443.09bdf32bcb123edcb9e086fd1efddd5c15758511'
+       + '&ui=en')
+       .then(response => response.json())
   },
 
   disconnectUser(){

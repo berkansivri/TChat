@@ -18,7 +18,7 @@
 							<span class="input-group-text"><i class="fas fa-flag"></i></span>
 						</div>
 						<select v-model="lang" class="form-control">
-							<option v-for="lang in languages" :key="lang.value" :value="lang.value">{{lang.title}}</option>
+							<option v-for="(desc,alias) in languages" :key="alias" :value="alias">{{desc}}</option>
 						</select>
 					</div>
 						<p class="alert alert-dark small"> * Your information will be stored for your next entry</p>
@@ -39,7 +39,7 @@ export default {
 	data() {
 		return {
 			username: "",
-			languages: [{title: "Select your language", value:""},{title: "Turkish", value:"tr"}, {title: "English", value:"en"}],
+			languages: {"": "Select your language"},
 			lang: ""
 		};
 	},
@@ -61,6 +61,12 @@ export default {
 				this.$router.push("/");
 			})
 		}
+	},
+	created(){
+		this.$api.getLangs().then(res => {
+			this.languages = {...this.languages, ...res.langs};
+			this.lang = ""
+		})
 	}
 };
 </script>
