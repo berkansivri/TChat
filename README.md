@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/berkansivri/TChat/tree/master/public">
+  <a href="https://s3.amazonaws.com/tch4t/logo.png">
     <img src="logo.png" alt="Logo" width="80" height="80">
   </a>
 
