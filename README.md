@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://tchat.space">
+  <a href="http://tch4t.s3-website-us-east-1.amazonaws.com/login">
     <img src="https://s3.amazonaws.com/tch4t/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -8,7 +8,7 @@
   <p align="center">
     TChat is the simple single page application for auto translated chat built on <a href="https://vuejs.org" target="_blank"><img width="20" src="https://vuejs.org/images/logo.png" alt="Vue logo"></a>.
     <br />
-    <a target="_blank" href="http://tchat.space/">Live Demo</a>
+    <a target="_blank" href="http://tch4t.s3-website-us-east-1.amazonaws.com/login">Live Demo</a>
   </p>
 </p>
 
@@ -20,7 +20,7 @@ This project built for improve vue and cloud skills.
 * Users are stored in <a href="https://firebase.google.com/docs/database/" target="_blank">Firebase Realtime Db</a>. To remember the users kept the information in cookie with <a href="https://github.com/brix/crypto-js" target="_blank">crypted</a> data.
 * Messages are delivered with RabbitMQ (dockerize and runnig on ec2), connection with <a href="https://github.com/eclipse/paho.mqtt.javascript" target="_blank">Paho-MQTT</a> framework.
 * Auto translate with <a href="https://tech.yandex.com/translate/" target="_blank">Yandex Translate API</a> between selected language on user login.
-* <a href="http://tchat.space/" target="_blank">Live demo</a> on AWS S3 bucket. Used vue-cli <a href="https://github.com/multiplegeorges/vue-cli-plugin-s3-deploy" target="_blank">s3 deploy plugin</a> for production.
+* <a href="http://tch4t.s3-website-us-east-1.amazonaws.com/login" target="_blank">Live demo</a> on AWS S3 bucket. Used vue-cli <a href="https://github.com/multiplegeorges/vue-cli-plugin-s3-deploy" target="_blank">s3 deploy plugin</a> for production.
 
 
 
